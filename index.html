@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taskpad - To-Do List with Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="brand">Taskpad</p>
+      <h1 id="today-date">Today</h1>
+      <p id="summary" class="hero-summary" aria-live="polite"></p>
+      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    </header>
+
+    <form id="add-form" class="add-form">
+      <input id="new-title" type="text" placeholder="What needs doing?" maxlength="120" required aria-label="Task title">
+      <div class="add-options">
+        <select id="new-priority" aria-label="Priority">
+          <option value="low">Low priority</option>
+          <option value="medium" selected>Medium priority</option>
+          <option value="high">High priority</option>
+        </select>
+        <input id="new-due" type="date" aria-label="Due date">
+        <button type="submit" class="btn-primary">Add task</button>
+      </div>
+    </form>
+
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Search tasks and notes" aria-label="Search tasks and notes">
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button type="button" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-filter="active" aria-pressed="false">To do</button>
+        <button type="button" data-filter="done" aria-pressed="false">Done</button>
+      </div>
+    </div>
+
+    <ul id="task-list" class="task-list"></ul>
+    <p id="empty" class="empty" hidden></p>
+  </main>
+
+  <dialog id="edit-dialog">
+    <form id="edit-form">
+      <h2>Edit task</h2>
+      <label>Title
+        <input id="edit-title" type="text" maxlength="120" required>
+      </label>
+      <label>Priority
+        <select id="edit-priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+      <label>Due date
+        <input id="edit-due" type="date">
+      </label>
+      <div class="dialog-actions">
+        <button type="button" id="edit-cancel" class="btn-ghost">Cancel</button>
+        <button type="submit" class="btn-primary">Save changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
